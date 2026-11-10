@@ -4,7 +4,7 @@ import { defineConfig } from "vitest/config";
 export default defineConfig({
   resolve: { alias: { "@app": resolve(import.meta.dirname, "src/app") } },
   test: {
-    include: ["src/**/*.test.{ts,tsx}", "eslint-rules/**/*.test.js"],
+    include: ["src/**/*.test.{ts,tsx}", "eslint-rules/**/*.test.js", ".claude/hooks/**/*.test.js"],
     environment: "jsdom",
     setupFiles: ["src/test/setup.ts"],
     coverage: {

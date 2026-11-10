@@ -30,3 +30,23 @@ Qualquer lib fora desta tabela: pergunte ao dev antes, dizendo qual, para quê, 
 - `no-comments`: comentário só com `// simplified:` ou `// workaround:` e o porquê.
 - `feature-structure`: arquivo de feature fora das pastas fixas, ou `index` de reexportação.
 - `no-cross-feature-imports`: feature importando outra feature.
+- `max-file-lines`: arquivo `.tsx` com mais de 250 linhas.
+
+Toda mensagem de regra diz o que fazer no lugar e aponta o doc. Regra nova segue o mesmo formato: o agente lê a mensagem e se corrige sozinho.
+
+## Guard rails fora do lint
+
+O que é proibição vira bloqueio de máquina; o texto das regras só explica o porquê.
+
+| Onde | O que faz |
+| --- | --- |
+| `.claude/settings.json` (`permissions.deny`) | Barra edição de `route-tree.gen.ts`, leitura de `.env*`, `npm`, `yarn`, `git push --force` e `rm -rf`. |
+| `.claude/hooks/protected-branch.js` (PreToolUse) | Commit ou push em `homolog`/`main` pede confirmação do dev. |
+| `.claude/hooks/lint-on-edit.js` (PostToolUse) | ESLint e Prettier no arquivo que o agente acabou de editar. |
+| `.claude/hooks/verify-on-stop.js` (Stop) | Com código alterado, o agente só encerra com tipos, lint, formatação e testes ligados passando. Vale uma rodada por turno. |
+| `.githooks/pre-commit` | ESLint e Prettier nos arquivos do commit, mais `tsc`. Ativado pelo `prepare` (`core.hooksPath`). |
+| `preinstall` | Instalação fora do pnpm falha. |
+
+Clone que já tinha `node_modules` antes do pre-commit existir: rode `pnpm run prepare` uma vez (o pnpm pula o `prepare` quando a instalação já está em dia). O pre-commit confere o arquivo como está no disco, não só o trecho que entrou no commit. O hook de branch lê a branch antes do comando rodar: `git checkout main && git commit` num comando só passa por ele.
+
+Os hooks do Claude Code só valem para o Claude Code. Para qualquer agente ou pessoa, a barreira é o pre-commit, o CI e a proteção de branch no servidor.

@@ -8,6 +8,8 @@
     "node": ">=26"
   },
   "scripts": {
+    "preinstall": "node -e \"if (!/^pnpm\\//.test(process.env.npm_config_user_agent ?? '')) { console.error('Este projeto usa pnpm: corepack enable && pnpm install'); process.exit(1) }\"",
+    "prepare": "git config core.hooksPath .githooks || true",
     "dev": "vite",
     "build": "vite build",
     "check": "tsc --noEmit && eslint . && prettier --check . && knip",

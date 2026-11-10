@@ -14,6 +14,50 @@
       "Bash(git diff*)",
       "Bash(git log*)"
     ],
-    "deny": ["Bash(git push --force*)", "Bash(rm -rf*)", "Read(.env*)", "Write(src/app/route-tree.gen.ts)"]
+    "deny": [
+      "Bash(git push --force*)",
+      "Bash(rm -rf*)",
+      "Bash(npm *)",
+      "Bash(yarn *)",
+      "Read(.env*)",
+      "Edit(/src/app/route-tree.gen.ts)"
+    ]
+  },
+  "hooks": {
+    "PreToolUse": [
+      {
+        "matcher": "Bash",
+        "hooks": [
+          {
+            "type": "command",
+            "command": "node \"${CLAUDE_PROJECT_DIR}/.claude/hooks/protected-branch.js\"",
+            "timeout": 10
+          }
+        ]
+      }
+    ],
+    "PostToolUse": [
+      {
+        "matcher": "Edit|Write",
+        "hooks": [
+          {
+            "type": "command",
+            "command": "node \"${CLAUDE_PROJECT_DIR}/.claude/hooks/lint-on-edit.js\"",
+            "timeout": 60
+          }
+        ]
+      }
+    ],
+    "Stop": [
+      {
+        "hooks": [
+          {
+            "type": "command",
+            "command": "node \"${CLAUDE_PROJECT_DIR}/.claude/hooks/verify-on-stop.js\"",
+            "timeout": 180
+          }
+        ]
+      }
+    ]
   }
 }

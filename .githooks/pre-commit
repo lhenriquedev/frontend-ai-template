@@ -1,0 +1,8 @@
+#!/bin/sh
+set -e
+
+if git diff --cached --quiet --diff-filter=ACMR; then exit 0; fi
+
+git diff --cached --name-only --diff-filter=ACMR -z | xargs -0 pnpm exec eslint --no-warn-ignored
+git diff --cached --name-only --diff-filter=ACMR -z | xargs -0 pnpm exec prettier --check --ignore-unknown
+pnpm exec tsc --noEmit
