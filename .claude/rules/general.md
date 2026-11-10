@@ -31,9 +31,7 @@ Antes de escrever código que fala com o servidor (contrato, API, query, mutatio
 
 - Arquivo editado passa por Prettier e ESLint. Erro de tipo, lint ou teste nunca fica para depois.
 - Antes de concluir: `pnpm verify` (tipos + lint + testes + build).
-- E2E local: durante o trabalho, rode só os specs da feature (`pnpm test:e2e e2e/<fluxo>.spec.ts`). A suíte completa roda uma vez, no fim, depois do code-review. O CI só roda e2e em PR para `homolog`; antes disso o local é a única barreira.
-- Feature pronta: SEMPRE rode `mattpocock-skills:code-review` antes de abrir o PR.
-
+- E2E local: durante o trabalho, rode só os specs da feature (`pnpm test:e2e e2e/<fluxo>.spec.ts`). A suíte completa roda uma vez, no fim. O CI só roda e2e em PR para `homolog`; antes disso o local é a única barreira.
 ## Testes
 
 Código bom aqui é código verificável: dá para quebrar e ver um teste ficar vermelho. Quem lê e altera o código quase sempre é um agente, e ele confia no que os testes provam, não no que o código parece fazer.
@@ -47,7 +45,7 @@ Código bom aqui é código verificável: dá para quebrar e ver um teste ficar 
   - **Integração**: o hook renderizado com `QueryClient` + API http real + cliente http ou socket falso injetado. Confere o que a tela recebe. Sem MSW.
   - **Caminho feliz** e **caminho errado**, sempre. Erro mínimo no HTTP: 401 (leva à sessão expirada), 404, 5xx, rede caída (o request rejeita) e payload fora do schema. No WebSocket: fechamento inesperado, mensagem inválida e mensagem fora de ordem.
   - Duplicação e vazamento: ver `integration.md`.
-- Toda feature, visual ou de integração, é conferida no navegador antes do PR, com o **MCP `playwright`**: execute o caminho feliz e um caso de falha ou vazio, leia `browser_console_messages` e `browser_network_requests` (zero erro no console, nenhum request duplicado) e tire 1 screenshot do estado final. Em `VITE_API_MODE=mock` não há HTTP de API: lá a ausência de request duplicado fica provada pelo teste de integração do hook em StrictMode.
+- Toda feature, visual ou de integração, é conferida no navegador antes de dar a task como concluída, com o **MCP `playwright`**: execute o caminho feliz e um caso de falha ou vazio, leia `browser_console_messages` e `browser_network_requests` (zero erro no console, nenhum request duplicado) e tire 1 screenshot do estado final. Em `VITE_API_MODE=mock` não há HTTP de API: lá a ausência de request duplicado fica provada pelo teste de integração do hook em StrictMode.
 - Tela nova ou com vários componentes: no fim, pergunte ao dev se ele quer passar a skill `impeccable` para revisar a UI. Não rode sem ele pedir.
 
 ## Git

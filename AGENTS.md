@@ -32,6 +32,6 @@ Fonte da verdade: `src/app/shell/styles/base.css` (tokens) e `src/app/shared/ui/
 
 ## Agent skills
 
-O fluxo espera instalados no Claude Code: `mattpocock-skills` (`tdd`, `diagnosing-bugs`, `code-review`, `domain-modeling`), `frontend-design` e o MCP `playwright`.
+O fluxo espera instalados no Claude Code: `mattpocock-skills` (`tdd`, `diagnosing-bugs`, `domain-modeling`), `frontend-design` e o MCP `playwright`.
 
 Como as skills consomem o glossário e os ADRs: `docs/agents/domain.md`.
