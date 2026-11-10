@@ -59,7 +59,7 @@ Detalhe e motivos em `docs/arquitetura.md`. Stack em `docs/stack.md`.
 - API e mock: nascem com o primeiro endpoint, em `features/<nome>/api/`.
 - axios, Zustand e React Hook Form: aprovados, instalados na primeira feature que usar (`docs/stack.md`).
 - Autenticação e tempo real: variam por projeto.
-- Deploy: cada projeto escolhe o seu.
+- Deploy: cada projeto escolhe o seu. O job `deploy` do CI publica só o próprio template no Cloudflare e fica pulado nos projetos criados dele.
 
 ## Levando uma melhoria do template para um projeto já criado
 
