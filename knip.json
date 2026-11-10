@@ -1,0 +1,12 @@
+{
+  "$schema": "https://unpkg.com/knip@6/schema.json",
+  "entry": ["eslint-rules/*.js", "src/app/shared/ui/*.tsx", "src/app/shared/lib/utils.ts", "src/app/env.ts"],
+  "ignoreDependencies": ["axe-core"],
+  "ignoreExportsUsedInFile": true,
+  "ignoreIssues": {
+    "src/app/shared/ui/**": ["exports", "types"],
+    "src/app/shared/api/contracts/**": ["enumMembers"],
+    "src/app/shared/lib/utils.ts": ["exports"],
+    "src/app/env.ts": ["exports"]
+  }
+}

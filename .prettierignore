@@ -1,0 +1,7 @@
+pnpm-lock.yaml
+dist
+coverage
+playwright-report
+test-results
+*.md
+src/app/route-tree.gen.ts

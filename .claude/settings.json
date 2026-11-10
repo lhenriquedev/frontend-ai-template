@@ -1,0 +1,19 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(pnpm dev)",
+      "Bash(pnpm check)",
+      "Bash(pnpm test*)",
+      "Bash(pnpm lint*)",
+      "Bash(pnpm format*)",
+      "Bash(pnpm verify)",
+      "Bash(pnpm exec vitest*)",
+      "Bash(pnpm exec playwright*)",
+      "Bash(pnpm exec tsc*)",
+      "Bash(git status*)",
+      "Bash(git diff*)",
+      "Bash(git log*)"
+    ],
+    "deny": ["Bash(git push --force*)", "Bash(rm -rf*)", "Read(.env*)", "Write(src/app/route-tree.gen.ts)"]
+  }
+}
