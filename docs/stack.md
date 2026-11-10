@@ -46,6 +46,7 @@ O que é proibição vira bloqueio de máquina; o texto das regras só explica o
 | `.claude/hooks/verify-on-stop.js` (Stop) | Com código alterado, o agente só encerra com tipos, lint, formatação e testes ligados passando. Vale uma rodada por turno. |
 | `.githooks/pre-commit` | ESLint e Prettier nos arquivos do commit, mais `tsc`. Ativado pelo `prepare` (`core.hooksPath`). |
 | `preinstall` | Instalação fora do pnpm falha. |
+| `.github/scripts/test-changes.js` (job `test-changes` do CI) | Em PR, avisa quando um teste que já existia perdeu linhas ou foi removido. Não bloqueia; teste novo não gera aviso. |
 
 Clone que já tinha `node_modules` antes do pre-commit existir: rode `pnpm run prepare` uma vez (o pnpm pula o `prepare` quando a instalação já está em dia). O pre-commit confere o arquivo como está no disco, não só o trecho que entrou no commit. O hook de branch lê a branch antes do comando rodar: `git checkout main && git commit` num comando só passa por ele.
 

@@ -16,7 +16,7 @@ Gerenciador: **pnpm** (nunca npm/yarn). Node 26 LTS.
 - `pnpm check`: `tsc --noEmit` + ESLint + `prettier --check` + knip (o que o CI roda)
 - `pnpm test` / `pnpm test:coverage`: Vitest (`*.test.ts(x)` ao lado do código)
 - `pnpm test:e2e`: Playwright (`e2e/`, chromium). Porta 5173 ocupada por outro projeto? `E2E_PORT=5184 pnpm test:e2e`
-- `pnpm verify`: check + test + build. Rode antes de concluir.
+- `pnpm verify`: check + test + build.
 
 ## O que o lint barra
 
