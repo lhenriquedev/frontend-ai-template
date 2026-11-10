@@ -4,7 +4,8 @@ export const noComments = {
   meta: {
     type: "suggestion",
     messages: {
-      forbidden: "Comentário proibido. Só `// simplified:` ou `// workaround:` com o porquê.",
+      forbidden:
+        "Comentário proibido. Apague e deixe o nome dizer o quê. Se for um porquê não óbvio, escreva `// simplified: <o que ficou de fora e por quê>` ou `// workaround: <motivo>` (AGENTS.md).",
     },
     schema: [],
   },

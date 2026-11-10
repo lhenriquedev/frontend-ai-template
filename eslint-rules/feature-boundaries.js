@@ -20,9 +20,10 @@ export const featureStructure = {
   meta: {
     type: "problem",
     messages: {
-      loose: `Arquivo solto na raiz da feature. Use uma das pastas: ${featureFolders.join(", ")} (docs/arquitetura.md).`,
-      folder: `Pasta fora do conjunto da feature. Use uma das pastas: ${featureFolders.join(", ")} (docs/arquitetura.md).`,
-      barrel: "Feature não tem index de reexportação: importe o arquivo direto (docs/arquitetura.md).",
+      loose: `Arquivo solto na raiz da feature. Mova para uma das pastas: ${featureFolders.join(", ")} (docs/arquitetura.md).`,
+      folder: `Pasta fora do conjunto da feature. Mova o arquivo para uma das pastas: ${featureFolders.join(", ")} (docs/arquitetura.md).`,
+      barrel:
+        "Feature não tem index de reexportação. Apague este arquivo e importe cada arquivo direto pelo caminho dele (docs/arquitetura.md).",
     },
     schema: [],
   },

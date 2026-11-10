@@ -14,6 +14,7 @@ Template de frontend (React + Vite + TypeScript) com as regras, o ferramental e 
 5. Troque este README pelo do projeto (mantenha Scripts, Variáveis e Estrutura).
 6. `pnpm verify` e `pnpm test:e2e` verdes → primeiro commit.
 7. Crie as branches `develop` e `homolog`. O CI roda e2e só em PR para `homolog`.
+8. Proteja `homolog` e `main` no servidor (PR obrigatório, CI verde). Os hooks locais pedem confirmação, mas não substituem a proteção de branch.
 
 ## Requisitos
 
