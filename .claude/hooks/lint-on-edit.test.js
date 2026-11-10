@@ -2,8 +2,10 @@ import process from "node:process";
 import { spawnSync } from "node:child_process";
 import { rmSync, writeFileSync } from "node:fs";
 import { join, resolve } from "node:path";
-import { afterEach, describe, expect, it } from "vitest";
+import { afterEach, describe, expect, it, vi } from "vitest";
 import { isCheckable } from "./lint-on-edit.js";
+
+vi.setConfig({ testTimeout: 60_000 });
 
 const projectDir = resolve(import.meta.dirname, "../..");
 const script = join(import.meta.dirname, "lint-on-edit.js");

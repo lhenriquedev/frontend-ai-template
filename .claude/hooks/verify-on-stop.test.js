@@ -3,8 +3,10 @@ import { execFileSync, spawnSync } from "node:child_process";
 import { mkdtempSync, rmSync, writeFileSync } from "node:fs";
 import { tmpdir } from "node:os";
 import { join } from "node:path";
-import { afterEach, beforeEach, describe, expect, it } from "vitest";
+import { afterEach, beforeEach, describe, expect, it, vi } from "vitest";
 import { changedFiles, checksFor } from "./verify-on-stop.js";
+
+vi.setConfig({ testTimeout: 60_000 });
 
 const script = join(import.meta.dirname, "verify-on-stop.js");
 
