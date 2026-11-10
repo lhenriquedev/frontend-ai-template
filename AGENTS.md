@@ -12,7 +12,7 @@ Leia antes de escrever código:
 
 Gerenciador: **pnpm** (nunca npm/yarn). Node 26 LTS.
 
-- `pnpm dev`: Vite local (modo da API vem de `VITE_API_MODE`)
+- `pnpm dev`: Vite local (exige `VITE_APP_ENV` no `.env`)
 - `pnpm check`: `tsc --noEmit` + ESLint + `prettier --check` + knip (o que o CI roda)
 - `pnpm test` / `pnpm test:coverage`: Vitest (`*.test.ts(x)` ao lado do código)
 - `pnpm test:e2e`: Playwright (`e2e/`, chromium). Porta 5173 ocupada por outro projeto? `E2E_PORT=5184 pnpm test:e2e`

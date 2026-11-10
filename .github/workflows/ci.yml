@@ -13,7 +13,7 @@ concurrency:
   cancel-in-progress: true
 
 env:
-  VITE_API_MODE: mock
+  VITE_APP_ENV: develop
 
 jobs:
   check:

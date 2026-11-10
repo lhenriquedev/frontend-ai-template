@@ -23,8 +23,8 @@ Template de frontend (React + Vite + TypeScript) com as regras, o ferramental e 
 
 | Comando | O que faz |
 | --- | --- |
-| `pnpm dev` | Sobe o app. Lê `.env` (o padrão é modo mock). |
-| `pnpm build` | Gera `dist/`. Exige `VITE_API_MODE`. |
+| `pnpm dev` | Sobe o app. Lê `.env`. |
+| `pnpm build` | Gera `dist/`. Exige `VITE_APP_ENV`. |
 | `pnpm check` | `tsc`, ESLint, Prettier (`--check`) e knip. |
 | `pnpm format` | Prettier em tudo. |
 | `pnpm test` | Vitest (testes ao lado do código, jsdom). `pnpm test:coverage` gera `coverage/`. |
@@ -37,9 +37,7 @@ Em `.env.example`. Toda `VITE_*` vai para o bundle público: só URLs e ids púb
 
 | Variável | Valores |
 | --- | --- |
-| `VITE_API_MODE` | `mock` ou `http`. Obrigatória; o build falha sem ela. |
-| `VITE_API_BASE` | URL absoluta da API. Obrigatória com `http`. |
-| `VITE_APP_ENV` | `develop`, `homolog` ou `production`. Opcional. |
+| `VITE_APP_ENV` | `develop`, `homolog` ou `production`. Obrigatória; o build falha sem ela. |
 
 ## Estrutura
 
