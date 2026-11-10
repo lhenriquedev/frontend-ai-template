@@ -24,7 +24,7 @@ Antes de escrever código que fala com o servidor (contrato, API, query, mutatio
 ## SOLID nas fronteiras, YAGNI dentro delas
 
 - **SRP**: cada componente, hook, slice ou módulo tem uma responsabilidade nomeável numa frase.
-- **DIP**: API HTTP, transporte em tempo real e config externa ficam atrás de interfaces, com implementação mock e real intercambiáveis por `VITE_API_MODE`.
+- **DIP**: API HTTP, transporte em tempo real e config externa ficam atrás de interfaces, com implementação mock e real intercambiáveis.
 - Interface ou abstração nova só com 2+ usos concretos. Duplicação local pequena é aceitável.
 
 ## Verificação
@@ -45,7 +45,7 @@ Código bom aqui é código verificável: dá para quebrar e ver um teste ficar 
   - **Integração**: o hook renderizado com `QueryClient` + API http real + cliente http ou socket falso injetado. Confere o que a tela recebe. Sem MSW.
   - **Caminho feliz** e **caminho errado**, sempre. Erro mínimo no HTTP: 401 (leva à sessão expirada), 404, 5xx, rede caída (o request rejeita) e payload fora do schema. No WebSocket: fechamento inesperado, mensagem inválida e mensagem fora de ordem.
   - Duplicação e vazamento: ver `integration.md`.
-- Toda feature, visual ou de integração, é conferida no navegador antes de dar a task como concluída, com o **MCP `playwright`**: execute o caminho feliz e um caso de falha ou vazio, leia `browser_console_messages` e `browser_network_requests` (zero erro no console, nenhum request duplicado) e tire 1 screenshot do estado final. Em `VITE_API_MODE=mock` não há HTTP de API: lá a ausência de request duplicado fica provada pelo teste de integração do hook em StrictMode.
+- Toda feature, visual ou de integração, é conferida no navegador antes de dar a task como concluída, com o **MCP `playwright`**: execute o caminho feliz e um caso de falha ou vazio, leia `browser_console_messages` e `browser_network_requests` (zero erro no console, nenhum request duplicado) e tire 1 screenshot do estado final. Com a implementação mock não há HTTP de API: lá a ausência de request duplicado fica provada pelo teste de integração do hook em StrictMode.
 - Tela nova ou com vários componentes: no fim, pergunte ao dev se ele quer passar a skill `impeccable` para revisar a UI. Não rode sem ele pedir.
 
 ## Git
